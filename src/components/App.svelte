@@ -45,9 +45,31 @@
     // 25 minutes => 25*60 = 1500 seconds
     // Offset: 700 => 1500 seconds
     const currentOffset = progressBar.style['stroke-dashoffset']
-    const newOffset = 700 - (time / TIME_LENGTHS.pomodoro * 700)
+    const newOffset = 700 - (time / TIME_LENGTHS[activity] * 700)
 
     progressBar.style['stroke-dashoffset'] = newOffset
+  }
+
+  function selectActivity(e) {
+
+    const newActivity = e.target.id
+
+    // Do nothing when the same button is clicked twice
+    if (activity === newActivity) return
+
+    // Stop the timer if it's running
+    if (running) startPauseTimer()
+
+    // Toggle activity buttons colors
+    document.getElementById(activity).classList.remove('bg-orange-red', 'text-dark-blue')
+    document.getElementById(newActivity).classList.add('bg-orange-red', 'text-dark-blue')
+
+    // Update new time length
+    time = TIME_LENGTHS[newActivity]
+    convertTime()
+
+    // Remember selected activity
+    activity = newActivity
   }
 
   const TIME_LENGTHS = {
@@ -65,12 +87,18 @@
   let seconds = '00'
   let running = false
   let activity = Object.keys(TIME_LENGTHS)[0]
+  let pomodoro
+  let shortBreak
+  let longBreak
 
   onMount(() => {
 
     // Wait for DOM to be loaded before getting the elements
     progressBar = document.getElementById('progress-bar')
     timerBtn = document.getElementById('timer-btn')
+    pomodoro = document.getElementById('pomodoro')
+    shortBreak = document.getElementById('shortBreak')
+    longBreak = document.getElementById('longBreak')
 
     updateOffset()
   })
@@ -79,9 +107,9 @@
 <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
 
 <div class="bg-very-dark-blue rounded-full p-2 w-fit mx-auto flex justify-center">
-  <button class="text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue">pomodoro</button>
-  <button class="text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue">short break</button>
-  <button class="text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue">long break</button>
+  <button id="pomodoro" class="bg-orange-red text-dark-blue text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
+  <button id="shortBreak" class="text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>short break</button>
+  <button id="longBreak" class="text-gray-500 rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>long break</button>
 </div>
 
 <button class="w-64 h-64 rounded-full mx-auto my-10 bg-gradient-to-br from-dark-blue-shadow to-light-blue-shadow shadow-neumorphism relative grid place-items-center" on:click={startPauseTimer}>
