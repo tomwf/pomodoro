@@ -15,7 +15,9 @@ module.exports = {
         'very-dark-blue': 'rgb(13, 15, 28)',
         'dark-blue-shadow': 'rgb(20, 25, 50)',
         'light-blue-shadow': 'rgb(42, 45, 80)',
-        'orange-red': 'rgb(235, 105, 105)',
+        'orange-red': '#eb6969',
+        'cyan': '#22d3ee',
+        'fuchsia': '#e879f9',
       },
       boxShadow: {
         'neumorphism': '20px 20px 60px #1a1d36, -20px -20px 60px #24274a',

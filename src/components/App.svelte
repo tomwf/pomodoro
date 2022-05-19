@@ -3,6 +3,7 @@
 
   import SettingsIcon from './icons/SettingsIcon.svelte'
   import CloseIcon from './icons/CloseIcon.svelte'
+  import GithubIcon from './icons/GithubIcon.svelte'
 
   import Head from './Head.svelte'
   import FontSelect from './FontSelect.svelte'
@@ -70,7 +71,7 @@
     // Toggle activity buttons colors
     const prevColor = document.getElementById(activity).className.split(' ').filter(name => /^bg/.test(name))[0]
     document.getElementById(activity).classList.remove(prevColor, 'text-dark-blue')
-    document.getElementById(newActivity).classList.add(`bg-${COLORS[color]}`, 'text-dark-blue')
+    document.getElementById(newActivity).classList.add(`bg-[${COLORS[color]}]`, 'text-dark-blue')
 
     // Update new time length
     time = TIME_LENGTHS[newActivity]
@@ -100,9 +101,9 @@
   }
 
   const COLORS = {
-    orangeRed: 'orange-red',
-    cyan: 'cyan-400',
-    fuchsia: 'fuchsia-400'
+    orangeRed: '#eb6969',
+    cyan: '#22d3ee',
+    fuchsia: '#e879f9',
   }
 
   let color = Object.keys(COLORS)[0]
@@ -139,14 +140,14 @@
   <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
 
   <div class="bg-very-dark-blue text-gray-400 rounded-full p-2 grid grid-cols-3 justify-stretch whitespace-nowrap w-full max-w-[400px] h-16">
-    <button id="pomodoro" class="bg-orange-red text-dark-blue rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
-    <button id="shortBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>short break</button>
-    <button id="longBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>long break</button>
+    <button id="pomodoro" class="bg-[#eb6969] text-dark-blue rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
+    <button id="shortBreak" class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>short break</button>
+    <button id="longBreak" class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>long break</button>
   </div>
 
   <button class="w-64 h-64 rounded-full mx-auto my-10 bg-gradient-to-br from-dark-blue-shadow to-light-blue-shadow shadow-neumorphism relative grid place-items-center" on:click={startPauseTimer}>
     <svg class="w-full h-full absolute" viewBox="0 0 256 256">
-      <circle id="progress-bar" class="stroke-orange-red fill-transparent" cx="128" cy="128" r="110" stroke-width="12" stroke-linecap="round" stroke-dasharray="700" stroke-dashoffset="0" transform="rotate(-90, 128 128)"/>
+      <circle id="progress-bar" fill="none" stroke-width="12" stroke="#eb6969" cx="128" cy="128" r="110" stroke-dasharray="700" stroke-dashoffset="0" transform="rotate(-90, 128 128)"/>
     </svg>
     <div class="text-light-blue text-center grid grid-rows-3">
       <p id="label" class="text-6xl font-semibold row-start-2">{minutes}:{seconds}</p>
