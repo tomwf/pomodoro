@@ -1,8 +1,10 @@
 <script>
   import { onMount } from 'svelte'
+
   import SettingsIcon from './icons/SettingsIcon.svelte'
   import CloseIcon from './icons/CloseIcon.svelte'
 
+  import Head from './Head.svelte'
   import FontSelect from './FontSelect.svelte'
   import ColorSelect from './ColorSelect.svelte'
 
@@ -130,6 +132,8 @@
     updateOffset()
   })
 </script>
+
+<Head />
 
 <main class="flex flex-col items-center select-none">
   <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
