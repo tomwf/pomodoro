@@ -134,10 +134,10 @@
 <main class="flex flex-col items-center select-none">
   <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
 
-  <div class="bg-very-dark-blue text-gray-500 rounded-full p-2 w-fit flex justify-center">
-    <button id="pomodoro" class="bg-orange-red text-dark-blue rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
-    <button id="shortBreak" class="rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>short break</button>
-    <button id="longBreak" class="rounded-full px-8 py-4 font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>long break</button>
+  <div class="bg-very-dark-blue text-gray-500 rounded-full p-2 grid grid-cols-3 justify-stretch whitespace-nowrap w-full max-w-[400px] h-16">
+    <button id="pomodoro" class="bg-orange-red text-dark-blue rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
+    <button id="shortBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>short break</button>
+    <button id="longBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>long break</button>
   </div>
 
   <button class="w-64 h-64 rounded-full mx-auto my-10 bg-gradient-to-br from-dark-blue-shadow to-light-blue-shadow shadow-neumorphism relative grid place-items-center" on:click={startPauseTimer}>
