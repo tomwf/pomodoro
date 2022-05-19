@@ -87,6 +87,10 @@
     }
   }
 
+  function setTime(e) {
+    TIME_LENGTHS[e.target.name] = 60 * e.target.value
+  }
+
   const TIME_LENGTHS = {
     pomodoro: 1500,
     shortBreak: 300,
@@ -163,15 +167,15 @@
         <div class="flex justify-between gap-4">
           <div class="">
             <label class="text-slate-400 font-medium" for="">pomodoro</label>
-            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="25">
+            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="25" name="pomodoro" on:change={setTime}>
           </div>
           <div class="">
             <label class="text-slate-400 font-medium" for="">short break</label>
-            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="5">
+            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="5" name="shortBreak" on:change={setTime}>
           </div>
           <div class="">
             <label class="text-slate-400 font-medium" for="">long break</label>
-            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="15">
+            <input type="number" class="block w-36 px-4 py-3 rounded-lg bg-[#f0f0fa] flex justify-between items-center" value="15" name="longBreak" on:change={setTime}>
           </div>
         </div>
       </div>
