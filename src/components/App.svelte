@@ -161,8 +161,11 @@
   <!-------- Settings modal -------->
   <div id="modal" class="hidden fixed inset-0 w-full h-full bg-transparent-black grid place-items-center px-8" on:click|self={toggleModal}>
     <div class="bg-white p-8 rounded-3xl w-full max-w-lg divide-y divide-solid">
-      <div class="flex justify-between mb-4">
+      <div class="flex items-center justify-between gap-4 mb-4">
         <h1 class="text-3xl font-medium">Settings</h1>
+        <a class="block w-8 h-8 mr-auto" href="https://github.com/tomwf/pomodoro">
+          <GithubIcon />
+        </a>
         <button class="fill-slate-400 w-5 h-5" on:click={toggleModal}>
           <CloseIcon />
         </button>
