@@ -3,9 +3,13 @@ module.exports = {
   theme: {
     fontFamily: {
       'body': ['Rubik', 'sans-serif'],
+      'rubik': ['Rubik', 'sans-serif'],
+      'serif': ['Noto Serif Display', 'serif'],
+      'mono': ['Roboto Mono', 'mono']
     },
     extend: {
       colors: {
+        'transparent-black': 'rgba(0, 0, 0, 0.5)',
         'light-blue': 'rgb(214, 222, 251)',
         'dark-blue': 'rgb(31, 34, 64)',
         'very-dark-blue': 'rgb(13, 15, 28)',
