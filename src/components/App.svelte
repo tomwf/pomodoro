@@ -145,7 +145,7 @@
   </div>
 
   <button class="w-64 h-64 rounded-full mx-auto my-10 bg-gradient-to-br from-dark-blue-shadow to-light-blue-shadow shadow-neumorphism relative grid place-items-center" on:click={startPauseTimer}>
-    <svg class="w-full h-full absolute">
+    <svg class="w-full h-full absolute" viewBox="0 0 256 256">
       <circle id="progress-bar" class="stroke-orange-red fill-transparent" cx="128" cy="128" r="110" stroke-width="12" stroke-linecap="round" stroke-dasharray="700" stroke-dashoffset="0" transform="rotate(-90, 128 128)"/>
     </svg>
     <div class="text-light-blue text-center grid grid-rows-3">
