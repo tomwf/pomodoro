@@ -138,7 +138,7 @@
 <main class="flex flex-col items-center select-none">
   <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
 
-  <div class="bg-very-dark-blue text-gray-500 rounded-full p-2 grid grid-cols-3 justify-stretch whitespace-nowrap w-full max-w-[400px] h-16">
+  <div class="bg-very-dark-blue text-gray-400 rounded-full p-2 grid grid-cols-3 justify-stretch whitespace-nowrap w-full max-w-[400px] h-16">
     <button id="pomodoro" class="bg-orange-red text-dark-blue rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
     <button id="shortBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>short break</button>
     <button id="longBreak" class="rounded-full font-medium focus:bg-orange-red focus:text-dark-blue" on:click={selectActivity}>long break</button>
@@ -153,7 +153,7 @@
       <p id="status" class="row-start-3 self-center uppercase tracking-[10px] text-xs font-semibold">{running ? 'pause' : 'start'}</p>
     </div>
   </button>
-  <button class="fill-slate-400 w-5 h-5" on:click={toggleModal}>
+  <button aria-label="Settings" class="fill-slate-400 w-5 h-5" on:click={toggleModal}>
     <SettingsIcon />
   </button>
 
