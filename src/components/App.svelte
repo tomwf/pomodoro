@@ -188,7 +188,7 @@
         </div>
       </div>
       <FontSelect />
-      <ColorSelect COLORS={COLORS} bind:color activity={activity}/>
+      <ColorSelect COLORS={COLORS} activity={activity} bind:color/>
     </div>
   </div>
 </main>

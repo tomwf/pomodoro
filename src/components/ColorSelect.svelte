@@ -55,6 +55,6 @@
 <div class="flex items-center justify-between gap-4 pt-4">
   <h3 class="font-medium tracking-widest uppercase">Color</h3>
   <button id="orangeRed" class="ml-auto rounded-full bg-orange-red block w-12 h-12 text-white font-medium grid place-items-center" on:click={selectColor}><CheckIcon /></button>
-  <button id="cyan" class="rounded-full bg-cyan block w-12 h-12 text-white font-medium grid place-items-center" on:click={selectColor}><CheckIcon hidden/></button>
-  <button id="fuchsia" class="rounded-full bg-fuchsia block w-12 h-12 text-white font-medium grid place-items-center" on:click={selectColor}><CheckIcon hidden/></button>
+  <button id="cyan" class="rounded-full bg-[#22d3ee] block w-12 h-12 text-white font-medium grid place-items-center" on:click={selectColor}><CheckIcon hidden/></button>
+  <button id="fuchsia" class="rounded-full bg-[#e879f9] block w-12 h-12 text-white font-medium grid place-items-center" on:click={selectColor}><CheckIcon hidden/></button>
 </div>
