@@ -19,6 +19,7 @@
         // Reset timer when it's done
         if (time < 0) {
           clearInterval(interval)
+          playAudio()
 
           running = !running
           time = TIME_LENGTHS.pomodoro
@@ -94,6 +95,10 @@
     TIME_LENGTHS[e.target.name] = 60 * e.target.value
   }
 
+  function playAudio() {
+    alarm.play()
+  }
+
   const TIME_LENGTHS = {
     pomodoro: 1500,
     shortBreak: 300,
@@ -120,6 +125,7 @@
   let pomodoro
   let shortBreak
   let longBreak
+  let alarm
 
   onMount(() => {
 
@@ -129,6 +135,7 @@
     pomodoro = document.getElementById('pomodoro')
     shortBreak = document.getElementById('shortBreak')
     longBreak = document.getElementById('longBreak')
+    alarm = document.getElementById('alarm')
 
     updateOffset()
   })
@@ -157,6 +164,7 @@
   <button aria-label="Settings" class="fill-slate-400 w-5 h-5" on:click={toggleModal}>
     <SettingsIcon />
   </button>
+  <audio id="alarm" src="alarm.mp3"></audio>
 
   <!-------- Settings modal -------->
   <div id="modal" class="hidden fixed inset-0 w-full h-full bg-transparent-black grid place-items-center px-8" on:click|self={toggleModal}>
