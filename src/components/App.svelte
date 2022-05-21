@@ -22,7 +22,7 @@
           playAudio()
 
           running = !running
-          time = TIME_LENGTHS.pomodoro
+          time = TIME_LENGTHS[activity]
         }
 
         updateOffset()
@@ -34,6 +34,22 @@
     }
 
     running = !running
+  }
+
+  function getTime(time) {
+
+    let minutes
+    let seconds
+
+    // Convert total time into minutes and seconds
+    minutes = Math.floor(time / 60)
+    seconds = time % 60
+
+    // Convert minutes and sconds into string
+    minutes = minutes.toString().length === 1 ? '0' + minutes : minutes.toString()
+    seconds = seconds.toString().length === 1 ? '0' + seconds : seconds.toString()
+
+    return { minutes, seconds }
   }
 
   function convertTime() {
@@ -118,10 +134,10 @@
   let timerBtn
   let interval
   let time = TIME_LENGTHS.pomodoro
-  let minutes = '25'
-  let seconds = '00'
   let running = false
   let activity = Object.keys(TIME_LENGTHS)[0]
+  let minutes = getTime(TIME_LENGTHS[activity]).minutes
+  let seconds = getTime(TIME_LENGTHS[activity]).seconds
   let pomodoro
   let shortBreak
   let longBreak
