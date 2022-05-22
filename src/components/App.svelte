@@ -129,30 +129,16 @@
 
   let color = Object.keys(COLORS)[0]
 
-  let progressBar
+  let pomodoro, progressBar, shortBreak, longBreak, alarm
   let progress
-  let timerBtn
   let interval
   let time = TIME_LENGTHS.pomodoro
   let running = false
   let activity = Object.keys(TIME_LENGTHS)[0]
   let minutes = getTime(TIME_LENGTHS[activity]).minutes
   let seconds = getTime(TIME_LENGTHS[activity]).seconds
-  let pomodoro
-  let shortBreak
-  let longBreak
-  let alarm
 
   onMount(() => {
-
-    // Wait for DOM to be loaded before getting the elements
-    progressBar = document.getElementById('progress-bar')
-    timerBtn = document.getElementById('timer-btn')
-    pomodoro = document.getElementById('pomodoro')
-    shortBreak = document.getElementById('shortBreak')
-    longBreak = document.getElementById('longBreak')
-    alarm = document.getElementById('alarm')
-
     updateOffset()
   })
 </script>
@@ -163,14 +149,14 @@
   <h1 class="text-light-blue text-center text-3xl font-medium my-12">pomodoro</h1>
 
   <div class="bg-very-dark-blue text-gray-400 rounded-full p-2 grid grid-cols-3 justify-stretch whitespace-nowrap w-full max-w-[400px] h-16">
-    <button id="pomodoro" class="bg-[#eb6969] text-dark-blue rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
-    <button id="shortBreak" class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>short break</button>
-    <button id="longBreak" class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>long break</button>
+    <button id="pomodoro" bind:this={pomodoro} class="bg-[#eb6969] text-dark-blue rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>pomodoro</button>
+    <button id="shortBreak" bind:this={shortBreak} class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>short break</button>
+    <button id="longBreak" bind:this={longBreak} class="rounded-full font-medium focus:bg-[#eb6969] focus:text-dark-blue" on:click={selectActivity}>long break</button>
   </div>
 
   <button class="w-64 h-64 rounded-full mx-auto my-10 bg-gradient-to-br from-dark-blue-shadow to-light-blue-shadow shadow-neumorphism relative grid place-items-center" on:click={startPauseTimer}>
     <svg class="w-full h-full absolute" viewBox="0 0 256 256">
-      <circle id="progress-bar" fill="none" stroke-width="12" stroke="#eb6969" cx="128" cy="128" r="110" stroke-dasharray="700" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90, 128 128)"/>
+      <circle id="progress-bar" bind:this={progressBar} fill="none" stroke-width="12" stroke="#eb6969" cx="128" cy="128" r="110" stroke-dasharray="700" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90, 128 128)"/>
     </svg>
     <div class="text-light-blue text-center grid grid-rows-3">
       <p id="label" class="text-6xl font-semibold row-start-2">{minutes}:{seconds}</p>
@@ -180,7 +166,7 @@
   <button aria-label="Settings" class="fill-slate-400 w-5 h-5" on:click={toggleModal}>
     <SettingsIcon />
   </button>
-  <audio id="alarm" src="alarm.mp3"></audio>
+  <audio id="alarm" bind:this={alarm} src="alarm.mp3"></audio>
 
   <!-------- Settings modal -------->
   <div id="modal" class="hidden fixed inset-0 w-full h-full bg-transparent-black grid place-items-center px-8" on:click|self={toggleModal}>
